@@ -1,565 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Login | MinePeak Market</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login - MinePeak Market</title>
 
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* =================================
-           AUTHENTICATION
-        ================================= */
 
-        .auth-box {
-            overflow: hidden;
+        body {
+            min-height: 100vh;
+            background:
+                linear-gradient(
+                    135deg,
+                    #edf4ff,
+                    #f7f9fc
+                );
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* =================================
-           TABS
-        ================================= */
+        .auth-page {
+            width: 100%;
+            max-width: 430px;
+            padding: 20px;
+        }
+
+        .auth-logo {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 900;
+            color: #246bfd;
+            margin-bottom: 22px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow:
+                0 10px 35px rgba(30, 50, 80, .12);
+            border: 1px solid #e1e7ef;
+        }
+
+        .auth-card h1 {
+            text-align: center;
+            font-size: 25px;
+            margin-bottom: 7px;
+        }
+
+        .auth-subtitle {
+            text-align: center;
+            color: #758196;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
 
         .auth-tabs {
-            position: relative;
             display: flex;
-            border-bottom: 1px solid #dddfe2;
-            margin-bottom: 24px;
+            background: #edf2f8;
+            border-radius: 8px;
+            padding: 4px;
+            margin-bottom: 20px;
         }
 
-        .auth-tabs button {
-            position: relative;
-            z-index: 2;
-
+        .auth-tab {
             flex: 1;
-
-            background: transparent;
             border: none;
-
-            padding: 14px;
-
-            font-size: 16px;
-            font-weight: 600;
-
-            color: #65676b;
-
+            background: transparent;
+            padding: 11px;
+            border-radius: 6px;
+            font-weight: 700;
+            color: #66748a;
             cursor: pointer;
-
-            transition:
-                color 0.25s ease,
-                background 0.25s ease;
         }
 
-        .auth-tabs button:hover {
-            background: #f5f6f7;
+        .auth-tab.active {
+            background: white;
+            color: #246bfd;
+            box-shadow: 0 2px 7px rgba(0,0,0,.08);
         }
 
-        .auth-tabs button.active {
-            color: #1877f2;
+        .auth-form input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #ccd5e1;
+            border-radius: 8px;
+            padding: 0 14px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            outline: none;
         }
 
-        /* Sliding blue line */
-
-        .tab-indicator {
-            position: absolute;
-
-            bottom: -1px;
-            left: 0;
-
-            width: 50%;
-            height: 3px;
-
-            background: #1877f2;
-
-            border-radius: 3px 3px 0 0;
-
-            transition:
-                transform 0.35s cubic-bezier(.4, 0, .2, 1);
+        .auth-form input:focus {
+            border-color: #246bfd;
+            box-shadow: 0 0 0 3px rgba(36,107,253,.08);
         }
 
-        .tab-indicator.signup {
-            transform: translateX(100%);
+        .auth-button {
+            width: 100%;
+            height: 48px;
+            border: none;
+            border-radius: 8px;
+            background: #246bfd;
+            color: white;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
         }
 
-        /* =================================
-           AUTH CONTENT ANIMATION
-        ================================= */
-
-        .auth-content {
-            position: relative;
-            overflow: hidden;
+        .auth-button:hover {
+            background: #165be0;
         }
 
-        .auth-copy {
-            transition:
-                opacity 0.25s ease,
-                transform 0.35s cubic-bezier(.4, 0, .2, 1);
+        .forgot {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #246bfd;
+            font-size: 14px;
+            font-weight: 700;
         }
 
-        .auth-copy.slide-left {
-            opacity: 0;
-            transform: translateX(-25px);
+        .forgot:hover {
+            text-decoration: underline;
         }
 
-        .auth-copy.slide-right {
-            opacity: 0;
-            transform: translateX(25px);
+        .auth-message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
         }
 
-        /* =================================
-           FORM ANIMATION
-        ================================= */
-
-        #auth-form {
-            transition:
-                opacity 0.25s ease,
-                transform 0.35s cubic-bezier(.4, 0, .2, 1);
+        .discord-contact {
+            text-align: center;
+            margin-top: 18px;
+            color: #78859a;
+            font-size: 13px;
         }
 
-        #auth-form.slide-left {
-            opacity: 0;
-            transform: translateX(-30px);
+        .discord-contact a {
+            color: #5865f2;
+            font-weight: 800;
         }
 
-        #auth-form.slide-right {
-            opacity: 0;
-            transform: translateX(30px);
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #6d7a8e;
+            font-size: 13px;
         }
 
-        /* =================================
-           BUTTON
-        ================================= */
-
-        #auth-button {
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease,
-                opacity 0.2s ease;
-        }
-
-        #auth-button:hover {
-            transform: translateY(-1px);
-        }
-
-        #auth-button:active {
-            transform: translateY(0);
-        }
-
-        /* =================================
-           MESSAGE
-        ================================= */
-
-        #auth-message {
-            min-height: 21px;
-        }
     </style>
-</head>
 
+</head>
 
 <body>
 
-<header class="navbar">
+<div class="auth-page">
 
-    <div class="logo">
+    <div class="auth-logo">
         ⛏️ MinePeak Market
     </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-    </nav>
+    <div class="auth-card">
 
-</header>
+        <h1 id="authTitle">
+            Log in
+        </h1>
 
+        <p class="auth-subtitle" id="authSubtitle">
+            Welcome back to MinePeak Market.
+        </p>
 
-<main>
-
-<section class="auth-section">
-
-    <div class="auth-box">
-
-        <!-- TABS -->
 
         <div class="auth-tabs">
 
             <button
-                type="button"
-                id="login-tab"
-                class="active"
+                class="auth-tab active"
+                id="loginTab"
+                onclick="switchMode('login')"
             >
-                Login
+                Log In
             </button>
 
             <button
-                type="button"
-                id="signup-tab"
+                class="auth-tab"
+                id="signupTab"
+                onclick="switchMode('signup')"
             >
                 Sign Up
             </button>
 
-            <div
-                id="tab-indicator"
-                class="tab-indicator"
-            ></div>
-
         </div>
 
 
-        <div class="auth-content">
+        <form
+            class="auth-form"
+            id="authForm"
+        >
 
-            <!-- TITLE + DESCRIPTION -->
-
-            <div
-                id="auth-copy"
-                class="auth-copy"
+            <input
+                type="email"
+                id="email"
+                placeholder="Email address"
+                required
             >
 
-                <h1 id="auth-title">
-                    Welcome back
-                </h1>
+            <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+            >
 
-                <p id="auth-description">
-                    Log in to continue to MinePeak Market.
-                </p>
+            <button
+                class="auth-button"
+                type="submit"
+                id="authButton"
+            >
+                Log In
+            </button>
 
-            </div>
-
-
-            <!-- FORM -->
-
-            <form id="auth-form">
-
-                <label for="email">
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="you@example.com"
-                    autocomplete="email"
-                    required
-                >
+        </form>
 
 
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Your password"
-                    autocomplete="current-password"
-                    required
-                >
+        <a
+            href="#"
+            class="forgot"
+            id="forgotPassword"
+            onclick="forgotPassword(event)"
+        >
+            Forgot your password?
+        </a>
 
 
-                <button
-                    type="submit"
-                    class="btn primary"
-                    id="auth-button"
-                >
-                    Login
-                </button>
+        <div
+            class="auth-message"
+            id="authMessage"
+        ></div>
 
 
-                <p id="auth-message"></p>
+        <div class="discord-contact">
 
-            </form>
+            Need help?
+
+            <a
+                href="https://discord.gg/uPrkZWFkp"
+                target="_blank"
+            >
+                Discord · Drexar_226
+            </a>
 
         </div>
 
     </div>
 
-</section>
 
-</main>
+    <a
+        href="index.html"
+        class="back-home"
+    >
+        ← Back to MinePeak Market
+    </a>
 
+</div>
 
-<!-- =================================
-     SUPABASE
-================================= -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
-    /* =================================
-       SUPABASE CONFIG
-    ================================= */
+const SUPABASE_URL =
+    "https://uxxcmrewhohvhetfjlle.supabase.co";
 
-    const SUPABASE_URL =
-        "https://uxxcmrewhohvhetfjlle.supabase.co";
-
-    const SUPABASE_PUBLISHABLE_KEY =
-        "sb_publishable_44ZK_yp2muDR6QqpErQKJg_etMtYTUW";
+const SUPABASE_KEY =
+    "sb_publishable_44ZK_yp2muDR6QqpErQKJg_etMtYTUW";
 
 
-    const supabase =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_PUBLISHABLE_KEY
-        );
+const supabaseClient =
+    supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
-    /* =================================
-       ELEMENTS
-    ================================= */
+let signupMode = false;
 
-    const form =
-        document.getElementById("auth-form");
 
-    const button =
-        document.getElementById("auth-button");
+function switchMode(mode) {
 
-    const message =
-        document.getElementById("auth-message");
+    signupMode = mode === "signup";
 
     const loginTab =
-        document.getElementById("login-tab");
+        document.getElementById("loginTab");
 
     const signupTab =
-        document.getElementById("signup-tab");
+        document.getElementById("signupTab");
 
     const title =
-        document.getElementById("auth-title");
+        document.getElementById("authTitle");
 
-    const description =
-        document.getElementById("auth-description");
+    const subtitle =
+        document.getElementById("authSubtitle");
 
-    const indicator =
-        document.getElementById("tab-indicator");
+    const button =
+        document.getElementById("authButton");
 
-    const copy =
-        document.getElementById("auth-copy");
-
-
-    let signupMode = false;
+    const forgot =
+        document.getElementById("forgotPassword");
 
 
-    /* =================================
-       CHANGE AUTH MODE
-    ================================= */
+    if (signupMode) {
 
-    function switchMode(isSignup) {
+        signupTab.classList.add("active");
+        loginTab.classList.remove("active");
 
-        if (signupMode === isSignup) {
-            return;
-        }
+        title.textContent = "Create an account";
 
-        signupMode = isSignup;
+        subtitle.textContent =
+            "Join MinePeak Market today.";
 
+        button.textContent =
+            "Create Account";
 
-        /* ---------------------------------
-           Start exit animation
-        --------------------------------- */
+        forgot.style.display =
+            "none";
 
-        const direction =
-            isSignup ? "slide-left" : "slide-right";
+    } else {
 
-        copy.classList.add(direction);
-        form.classList.add(direction);
+        loginTab.classList.add("active");
+        signupTab.classList.remove("active");
 
+        title.textContent =
+            "Log in";
 
-        /* ---------------------------------
-           Move blue indicator
-        --------------------------------- */
+        subtitle.textContent =
+            "Welcome back to MinePeak Market.";
 
-        if (isSignup) {
+        button.textContent =
+            "Log In";
 
-            indicator.classList.add("signup");
-
-            signupTab.classList.add("active");
-            loginTab.classList.remove("active");
-
-        } else {
-
-            indicator.classList.remove("signup");
-
-            loginTab.classList.add("active");
-            signupTab.classList.remove("active");
-
-        }
-
-
-        /* ---------------------------------
-           Change content after animation
-        --------------------------------- */
-
-        setTimeout(function () {
-
-            if (signupMode) {
-
-                title.textContent =
-                    "Create your account";
-
-                description.textContent =
-                    "Join MinePeak Market and start trading.";
-
-                button.textContent =
-                    "Create Account";
-
-            } else {
-
-                title.textContent =
-                    "Welcome back";
-
-                description.textContent =
-                    "Log in to continue to MinePeak Market.";
-
-                button.textContent =
-                    "Login";
-
-            }
-
-
-            message.textContent = "";
-
-
-            /* ---------------------------------
-               Enter animation
-            --------------------------------- */
-
-            copy.classList.remove(direction);
-            form.classList.remove(direction);
-
-            const enterDirection =
-                isSignup
-                    ? "slide-right"
-                    : "slide-left";
-
-            copy.classList.add(enterDirection);
-            form.classList.add(enterDirection);
-
-
-            requestAnimationFrame(function () {
-
-                requestAnimationFrame(function () {
-
-                    copy.classList.remove(enterDirection);
-                    form.classList.remove(enterDirection);
-
-                });
-
-            });
-
-        }, 250);
-
+        forgot.style.display =
+            "block";
     }
+}
 
 
-    /* =================================
-       TAB EVENTS
-    ================================= */
+document
+    .getElementById("authForm")
+    .addEventListener("submit", async function(event) {
 
-    loginTab.addEventListener(
-        "click",
-        function () {
+        event.preventDefault();
 
-            switchMode(false);
+        const email =
+            document.getElementById("email")
+                .value
+                .trim();
 
-        }
-    );
+        const password =
+            document.getElementById("password")
+                .value;
 
-
-    signupTab.addEventListener(
-        "click",
-        function () {
-
-            switchMode(true);
-
-        }
-    );
+        const message =
+            document.getElementById("authMessage");
 
 
-    /* =================================
-       FORM SUBMISSION
-    ================================= */
-
-    form.addEventListener(
-        "submit",
-        async function (event) {
-
-            event.preventDefault();
+        message.textContent =
+            "Please wait...";
 
 
-            const email =
-                document
-                    .getElementById("email")
-                    .value
-                    .trim();
+        if (signupMode) {
 
-            const password =
-                document
-                    .getElementById("password")
-                    .value;
-
-
-            if (!email || !password) {
-
-                message.textContent =
-                    "Please enter your email and password.";
-
-                return;
-            }
-
-
-            button.disabled = true;
-
-            message.textContent =
-                "Please wait...";
-
-
-            /* =================================
-               SIGN UP
-            ================================= */
-
-            if (signupMode) {
-
-                const { error } =
-                    await supabase.auth.signUp({
-
-                        email: email,
-                        password: password
-
-                    });
-
-
-                button.disabled = false;
-
-
-                if (error) {
-
-                    message.textContent =
-                        error.message;
-
-                    return;
-                }
-
-
-                message.textContent =
-                    "Account created! Check your email to verify your account.";
-
-                return;
-            }
-
-
-            /* =================================
-               LOGIN
-            ================================= */
-
-            const { error } =
-                await supabase.auth.signInWithPassword({
-
+            const { data, error } =
+                await supabaseClient.auth.signUp({
                     email: email,
                     password: password
-
                 });
-
-
-            button.disabled = false;
 
 
             if (error) {
@@ -572,18 +400,88 @@
 
 
             message.textContent =
-                "Login successful!";
+                "Account created. Check your email to confirm your account.";
+
+        } else {
+
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
 
 
-            setTimeout(function () {
+            if (error) {
 
-                window.location.href =
-                    "index.html";
+                message.textContent =
+                    error.message;
 
-            }, 1000);
+                return;
+            }
 
+
+            window.location.href =
+                "index.html";
         }
-    );
+
+    });
+
+
+async function forgotPassword(event) {
+
+    event.preventDefault();
+
+    const email =
+        document.getElementById("email")
+            .value
+            .trim();
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    if (!email) {
+
+        message.textContent =
+            "Enter your email address first.";
+
+        return;
+    }
+
+
+    const { error } =
+        await supabaseClient.auth.resetPasswordForEmail(
+            email,
+            {
+                redirectTo:
+                    window.location.origin +
+                    "/auth.html"
+            }
+        );
+
+
+    if (error) {
+
+        message.textContent =
+            error.message;
+
+        return;
+    }
+
+
+    message.textContent =
+        "Password reset instructions have been sent to your email.";
+}
+
+
+/* Open the correct tab when ?mode=signup is used */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+if (params.get("mode") === "signup") {
+    switchMode("signup");
+}
 
 </script>
 
