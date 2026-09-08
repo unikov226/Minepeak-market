@@ -1,174 +1,236 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MinePeak Market</title>
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0f14;
-      color: white;
-    }
-
-    header {
-      background: #111821;
-      border-bottom: 1px solid #26313d;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #35d07f;
-    }
-
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 20px;
-    }
-
-    nav a:hover {
-      color: white;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 90px 20px;
-      background: linear-gradient(180deg, #111a23, #0b0f14);
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 span {
-      color: #35d07f;
-    }
-
-    .hero p {
-      color: #9da7b3;
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-
-    .button {
-      display: inline-block;
-      background: #35d07f;
-      color: #07100b;
-      padding: 13px 25px;
-      border-radius: 7px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .section {
-      padding: 50px 7%;
-    }
-
-    .section h2 {
-      margin-bottom: 25px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: #111821;
-      border: 1px solid #26313d;
-      border-radius: 10px;
-      padding: 25px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #9da7b3;
-      margin-bottom: 15px;
-    }
-
-    .price {
-      color: #35d07f;
-      font-weight: bold;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #697582;
-      border-top: 1px solid #26313d;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MinePeak Market</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">MinePeak <span>Market</span></div>
+<header class="navbar">
+    <div class="logo">⛏️ MinePeak Market</div>
 
     <nav>
-      <a href="#">Home</a>
-      <a href="#">Market</a>
-      <a href="#">Login</a>
+        <a href="index.html">Home</a>
+        <a href="#market">Market</a>
+        <a href="#categories">Categories</a>
+        <a href="#sell">Sell</a>
+        <a href="#login">Login</a>
     </nav>
-  </header>
+</header>
 
-  <section class="hero">
-    <h1>Welcome to <span>MinePeak Market</span></h1>
-    <p>Buy and sell MinePeak items and currency.</p>
-    <a href="#" class="button">Browse Market</a>
-  </section>
+<main>
 
-  <section class="section">
-    <h2>Featured Listings</h2>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">MINEPEAK TRADING PLATFORM</span>
 
-    <div class="cards">
+            <h1>Buy. Sell. Trade.</h1>
 
-      <div class="card">
-        <h3>MinePeak Coins</h3>
-        <p>Coins available from players.</p>
-        <div class="price">Coming soon</div>
-      </div>
+            <p>
+                A marketplace for MinePeak players to discover,
+                trade and sell digital goods.
+            </p>
 
-      <div class="card">
-        <h3>Rare Items</h3>
-        <p>Trade valuable MinePeak items.</p>
-        <div class="price">Coming soon</div>
-      </div>
+            <div class="hero-buttons">
+                <a href="#market" class="btn primary">Browse Market</a>
+                <a href="#sell" class="btn secondary">Start Selling</a>
+            </div>
+        </div>
+    </section>
 
-      <div class="card">
-        <h3>Player Listings</h3>
-        <p>Browse items listed by the community.</p>
-        <div class="price">Coming soon</div>
-      </div>
 
-    </div>
-  </section>
+    <section class="search-section">
+        <input
+            type="search"
+            id="search"
+            placeholder="Search MinePeak items, coins, players..."
+        >
+        <button class="search-btn">Search</button>
+    </section>
 
-  <footer>
-    © 2026 MinePeak Market
-  </footer>
+
+    <section id="categories" class="section">
+        <div class="section-heading">
+            <h2>Explore Categories</h2>
+            <p>Find exactly what you're looking for.</p>
+        </div>
+
+        <div class="category-grid">
+
+            <div class="category-card">
+                <div class="category-icon">💰</div>
+                <h3>MinePeak Coins</h3>
+                <p>Buy and sell MinePeak currency.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">⚔️</div>
+                <h3>Weapons & Items</h3>
+                <p>Discover rare and valuable items.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <h3>Builds & Bases</h3>
+                <p>Trade amazing builds and creations.</p>
+            </div>
+
+            <div class="category-card">
+                <div class="category-icon">📦</div>
+                <h3>Digital Files</h3>
+                <p>Maps, packs, files and more.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="market" class="section market-section">
+
+        <div class="section-heading">
+            <h2>Featured Listings</h2>
+            <p>Popular products from the community.</p>
+        </div>
+
+        <div class="listing-grid">
+
+            <article class="listing-card">
+                <div class="listing-image">💰</div>
+
+                <div class="listing-info">
+                    <span class="listing-category">MinePeak Coins</span>
+                    <h3>MinePeak Coins</h3>
+                    <p>Seller listings coming soon.</p>
+
+                    <div class="listing-bottom">
+                        <strong>Coming soon</strong>
+                        <span>⭐ New</span>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="listing-card">
+                <div class="listing-image">⚔️</div>
+
+                <div class="listing-info">
+                    <span class="listing-category">Rare Items</span>
+                    <h3>Rare MinePeak Items</h3>
+                    <p>Find powerful and valuable items.</p>
+
+                    <div class="listing-bottom">
+                        <strong>Coming soon</strong>
+                        <span>⭐ New</span>
+                    </div>
+                </div>
+            </article>
+
+
+            <article class="listing-card">
+                <div class="listing-image">📦</div>
+
+                <div class="listing-info">
+                    <span class="listing-category">Digital Products</span>
+                    <h3>Community Products</h3>
+                    <p>Digital products from MinePeak creators.</p>
+
+                    <div class="listing-bottom">
+                        <strong>Coming soon</strong>
+                        <span>⭐ New</span>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <section id="sell" class="seller-section">
+
+        <div>
+            <span class="badge">SELL ON MINEPEAK MARKET</span>
+
+            <h2>Have something to sell?</h2>
+
+            <p>
+                Create your own listing, add screenshots,
+                upload your product and reach other players.
+            </p>
+        </div>
+
+        <button class="btn primary">
+            Create Listing
+        </button>
+
+    </section>
+
+
+    <section class="trading-section">
+
+        <div class="section-heading">
+            <h2>Safe MinePeak Trading</h2>
+            <p>
+                Every transaction will be connected to the buyer's
+                MinePeak username.
+            </p>
+        </div>
+
+        <div class="trade-box">
+
+            <label for="minepeak-username">
+                MinePeak Username
+            </label>
+
+            <input
+                id="minepeak-username"
+                type="text"
+                placeholder="Enter your MinePeak username"
+            >
+
+            <label for="confirm-username">
+                Confirm MinePeak Username
+            </label>
+
+            <input
+                id="confirm-username"
+                type="text"
+                placeholder="Enter your username again"
+            >
+
+            <label class="checkbox">
+                <input type="checkbox" id="username-confirmation">
+                I confirm that this is my correct MinePeak username.
+            </label>
+
+            <button class="btn primary" id="confirm-trade">
+                Confirm Username
+            </button>
+
+            <p id="trade-message"></p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <div class="logo">⛏️ MinePeak Market</div>
+
+    <p>
+        © 2026 MinePeak Market. All rights reserved.
+    </p>
+</footer>
+
+
+<script src="script.js"></script>
 
 </body>
 </html>
+```
