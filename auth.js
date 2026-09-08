@@ -6,68 +6,30 @@ const supabase = window.supabase.createClient(
     SUPABASE_PUBLISHABLE_KEY
 );
 
-const form = document.getElementById("auth-form");
-const button = document.getElementById("auth-button");
-const message = document.getElementById("auth-message");
-
 const loginTab = document.getElementById("login-tab");
 const signupTab = document.getElementById("signup-tab");
+const authButton = document.getElementById("auth-button");
+const authMessage = document.getElementById("auth-message");
 
 let signupMode = false;
 
-loginTab.addEventListener("click", () => {
+loginTab.addEventListener("click", function () {
     signupMode = false;
-    button.textContent = "Login";
+
     loginTab.classList.add("active");
     signupTab.classList.remove("active");
-    message.textContent = "";
+
+    authButton.textContent = "Login";
+    authMessage.textContent = "";
 });
 
-signupTab.addEventListener("click", () => {
+signupTab.addEventListener("click", function () {
     signupMode = true;
-    button.textContent = "Create Account";
+
     signupTab.classList.add("active");
     loginTab.classList.remove("active");
-    message.textContent = "";
+
+    authButton.textContent = "Create Account";
+    authMessage.textContent = "";
 });
-
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    message.textContent = "Please wait...";
-
-    if (signupMode) {
-        const { error } = await supabase.auth.signUp({
-            email: email,
-            password: password
-        });
-
-        if (error) {
-            message.textContent = error.message;
-            return;
-        }
-
-        message.textContent =
-            "Account created! Check your email to verify your account.";
-
-    } else {
-        const { error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password
-        });
-
-        if (error) {
-            message.textContent = error.message;
-            return;
-        }
-
-        message.textContent = "Login successful!";
-
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1000);
-    }
 });
