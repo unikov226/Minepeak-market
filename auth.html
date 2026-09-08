@@ -1,68 +1,108 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | MinePeak Market</title>
-    <link rel="stylesheet" href="style.css">
+
+```
+<title>Login | MinePeak Market</title>
+
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
 <header class="navbar">
     <div class="logo">⛏️ MinePeak Market</div>
-    <nav>
-        <a href="index.html">Home</a>
-    </nav>
+
+```
+<nav>
+    <a href="index.html">Home</a>
+</nav>
+```
+
 </header>
 
 <main>
 
 <section class="auth-section">
 
-    <div class="auth-box">
+```
+<div class="auth-box">
 
-        <h1>Welcome to MinePeak Market</h1>
-        <p>Create an account or log in to continue.</p>
+    <h1>Welcome to MinePeak Market</h1>
 
-        <div class="auth-tabs">
-            <button id="login-tab" class="active">Login</button>
-            <button id="signup-tab">Sign Up</button>
-        </div>
+    <p>
+        Create an account or log in to continue.
+    </p>
 
-        <form id="auth-form">
+    <div class="auth-tabs">
 
-            <label for="email">Email</label>
-            <input
-                type="email"
-                id="email"
-                placeholder="you@example.com"
-                required
-            >
+        <button
+            type="button"
+            id="login-tab"
+            class="active"
+        >
+            Login
+        </button>
 
-            <label for="password">Password</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Your password"
-                required
-            >
-
-            <button type="submit" class="btn primary" id="auth-button">
-                Login
-            </button>
-
-            <p id="auth-message"></p>
-
-        </form>
+        <button
+            type="button"
+            id="signup-tab"
+        >
+            Sign Up
+        </button>
 
     </div>
+
+    <form id="auth-form">
+
+        <label for="email">
+            Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="you@example.com"
+            required
+        >
+
+        <label for="password">
+            Password
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Your password"
+            required
+        >
+
+        <button
+            type="submit"
+            class="btn primary"
+            id="auth-button"
+        >
+            Login
+        </button>
+
+        <p id="auth-message"></p>
+
+    </form>
+
+</div>
+```
 
 </section>
 
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script src="auth.js"></script>
 
 </body>
