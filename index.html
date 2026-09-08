@@ -1,358 +1,465 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-```
-<title>Login | MinePeak Market</title>
-
-<link rel="stylesheet" href="style.css">
-
-<style>
-    /* Authentication tabs */
-    .auth-tabs {
-        display: flex;
-        border-bottom: 1px solid #dddfe2;
-        margin-bottom: 24px;
-    }
-
-    .auth-tabs button {
-        flex: 1;
-        background: none;
-        border: none;
-        padding: 14px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        color: #65676b;
-        border-bottom: 3px solid transparent;
-        transition: 0.2s;
-    }
-
-    .auth-tabs button:hover {
-        background: #f5f6f7;
-        color: #1877f2;
-    }
-
-    .auth-tabs button.active {
-        color: #1877f2;
-        border-bottom-color: #1877f2;
-    }
-</style>
-```
-
+    <title>MinePeak Market</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="navbar">
+    <div class="nav-left">
+        <a href="index.html" class="logo">⛏️ MinePeak Market</a>
 
-```
-<div class="logo">
-    ⛏️ MinePeak Market
-</div>
+        <a href="#categories">Categories</a>
+        <a href="#deals">Deals</a>
+        <a href="#market">Marketplace</a>
+    </div>
 
-<nav>
-    <a href="index.html">Home</a>
-</nav>
-```
+    <div class="nav-search">
+        <input type="text" id="searchInput" placeholder="Search MinePeak Market...">
+        <button onclick="searchProducts()">🔍</button>
+    </div>
 
+    <div class="nav-right">
+        <a href="auth.html?mode=login">Login</a>
+        <a href="auth.html?mode=signup" class="signup-nav">Sign Up</a>
+
+        <a
+            href="https://discord.gg/uPrkZWFkp"
+            target="_blank"
+            class="discord-nav"
+        >
+            Discord
+        </a>
+    </div>
 </header>
 
-<main>
 
-<section class="auth-section">
+<section class="hero">
 
-```
-<div class="auth-box">
+    <div class="hero-content">
 
-    <h1 id="auth-title">
-        Welcome back
-    </h1>
+        <span class="hero-label">THE MINEPEAK MARKETPLACE</span>
 
-    <p id="auth-description">
-        Log in to continue to MinePeak Market.
-    </p>
+        <h1>
+            Buy. Sell.
+            <span>Trade.</span>
+        </h1>
+
+        <p>
+            Discover MinePeak items, balance, services and digital goods
+            from players and sellers in one marketplace.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#market" class="main-button">
+                🛒 Browse Marketplace
+            </a>
+
+            <a href="auth.html?mode=signup" class="secondary-button">
+                ✨ Create Account
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-    <!-- LOGIN / SIGN UP TABS -->
+<section class="quick-bar">
 
-    <div class="auth-tabs">
+    <div>
+        <strong>⚡ Fast</strong>
+        <span>Find what you need quickly</span>
+    </div>
 
-        <button
-            type="button"
-            id="login-tab"
-            class="active"
-        >
-            Login
-        </button>
+    <div>
+        <strong>🛡️ Safer Trading</strong>
+        <span>Built around marketplace transactions</span>
+    </div>
 
-        <button
-            type="button"
-            id="signup-tab"
-        >
-            Sign Up
-        </button>
+    <div>
+        <strong>⭐ Sellers</strong>
+        <span>Build your reputation</span>
+    </div>
+
+    <div>
+        <strong>💬 Support</strong>
+        <span>Contact us on Discord</span>
+    </div>
+
+</section>
+
+
+<section id="categories" class="section">
+
+    <div class="section-title">
+        <div>
+            <span>EXPLORE</span>
+            <h2>Shop by Category</h2>
+        </div>
+
+        <a href="#market">View all →</a>
+    </div>
+
+    <div class="categories">
+
+        <a href="#market" class="category-card">
+            <div class="category-icon">💰</div>
+            <h3>MinePeak Balance</h3>
+            <p>Buy and sell server balance.</p>
+        </a>
+
+        <a href="#market" class="category-card">
+            <div class="category-icon">⚔️</div>
+            <h3>Weapons</h3>
+            <p>Powerful gear and equipment.</p>
+        </a>
+
+        <a href="#market" class="category-card">
+            <div class="category-icon">🛡️</div>
+            <h3>Armor</h3>
+            <p>Protect your character.</p>
+        </a>
+
+        <a href="#market" class="category-card">
+            <div class="category-icon">💎</div>
+            <h3>Rare Items</h3>
+            <p>Find valuable collectibles.</p>
+        </a>
+
+        <a href="#market" class="category-card">
+            <div class="category-icon">📦</div>
+            <h3>Bundles</h3>
+            <p>Multiple items in one deal.</p>
+        </a>
+
+    </div>
+
+</section>
+
+
+<section id="deals" class="deals-section">
+
+    <div class="section-title light-title">
+        <div>
+            <span>TODAY'S PICKS</span>
+            <h2>Featured Deals</h2>
+        </div>
+
+        <a href="#market">See more →</a>
+    </div>
+
+    <div class="deal-grid">
+
+        <article class="deal-card">
+
+            <div class="deal-image purple">
+                💰
+            </div>
+
+            <div class="deal-content">
+
+                <span class="deal-tag">POPULAR</span>
+
+                <h3>10,000,000 MinePeak Balance</h3>
+
+                <p>Instant marketplace listing</p>
+
+                <div class="deal-bottom">
+                    <strong>$2.80</strong>
+                    <button>View Deal</button>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="deal-card">
+
+            <div class="deal-image blue">
+                ⚔️
+            </div>
+
+            <div class="deal-content">
+
+                <span class="deal-tag">TRENDING</span>
+
+                <h3>Netherite Weapon</h3>
+
+                <p>High-level enchanted equipment</p>
+
+                <div class="deal-bottom">
+                    <strong>$5.00</strong>
+                    <button>View Deal</button>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="deal-card">
+
+            <div class="deal-image green">
+                💎
+            </div>
+
+            <div class="deal-content">
+
+                <span class="deal-tag">NEW</span>
+
+                <h3>Rare Item Bundle</h3>
+
+                <p>Multiple valuable items</p>
+
+                <div class="deal-bottom">
+                    <strong>$8.50</strong>
+                    <button>View Deal</button>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section id="market" class="section">
+
+    <div class="section-title">
+
+        <div>
+            <span>MARKETPLACE</span>
+            <h2>Popular Listings</h2>
+        </div>
+
+        <div class="sort-box">
+            <select id="sortSelect" onchange="sortListings()">
+                <option value="default">Recommended</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+            </select>
+        </div>
 
     </div>
 
 
-    <!-- AUTH FORM -->
+    <div class="product-grid" id="productGrid">
 
-    <form id="auth-form">
+        <article class="product-card" data-price="2.80">
 
-        <label for="email">
-            Email
-        </label>
+            <div class="product-image">
+                💰
+            </div>
 
-        <input
-            type="email"
-            id="email"
-            placeholder="you@example.com"
-            autocomplete="email"
-            required
-        >
+            <div class="product-info">
 
+                <span class="product-category">BALANCE</span>
 
-        <label for="password">
-            Password
-        </label>
+                <h3>10,000,000 MinePeak Balance</h3>
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Your password"
-            autocomplete="current-password"
-            required
-        >
+                <p class="seller">
+                    Seller: <strong>Drexar</strong> ⭐ 5.0
+                </p>
 
+                <div class="product-bottom">
 
-        <button
-            type="submit"
-            class="btn primary"
-            id="auth-button"
-        >
-            Login
-        </button>
+                    <strong>$2.80</strong>
+
+                    <button>View</button>
+
+                </div>
+
+            </div>
+
+        </article>
 
 
-        <p id="auth-message"></p>
+        <article class="product-card" data-price="5.00">
 
-    </form>
+            <div class="product-image">
+                ⚔️
+            </div>
 
-</div>
-```
+            <div class="product-info">
+
+                <span class="product-category">WEAPONS</span>
+
+                <h3>Netherite Spear</h3>
+
+                <p class="seller">
+                    Seller: <strong>VoidWalker</strong> ⭐ 4.9
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>$5.00</strong>
+
+                    <button>View</button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="product-card" data-price="8.50">
+
+            <div class="product-image">
+                💎
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">RARE ITEMS</span>
+
+                <h3>Rare Survival Bundle</h3>
+
+                <p class="seller">
+                    Seller: <strong>Nexonix</strong> ⭐ 4.8
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>$8.50</strong>
+
+                    <button>View</button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="product-card" data-price="12.00">
+
+            <div class="product-image">
+                🛡️
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">ARMOR</span>
+
+                <h3>Enchanted Netherite Armor</h3>
+
+                <p class="seller">
+                    Seller: <strong>MinerX</strong> ⭐ 4.7
+                </p>
+
+                <div class="product-bottom">
+
+                    <strong>$12.00</strong>
+
+                    <button>View</button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
 
 </section>
 
-</main>
 
-<!-- SUPABASE -->
+<section class="seller-section">
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <div>
 
-<script>
+        <span>SELL ON MINEPEAK MARKET</span>
 
-    /* =================================
-       SUPABASE CONFIG
-    ================================= */
+        <h2>Turn your items into opportunities.</h2>
 
-    const SUPABASE_URL = "YOUR_SUPABASE_URL";
+        <p>
+            Create listings, build your seller reputation and reach
+            players looking for MinePeak goods.
+        </p>
 
-    const SUPABASE_PUBLISHABLE_KEY =
-        "YOUR_SUPABASE_PUBLISHABLE_KEY";
+        <a href="auth.html?mode=signup" class="main-button">
+            Start Selling
+        </a>
 
+    </div>
 
-    const supabase = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_PUBLISHABLE_KEY
-    );
+    <div class="seller-art">
+        📦
+    </div>
 
+</section>
 
-    /* =================================
-       ELEMENTS
-    ================================= */
 
-    const form =
-        document.getElementById("auth-form");
+<section class="community">
 
-    const button =
-        document.getElementById("auth-button");
+    <div class="community-box">
 
-    const message =
-        document.getElementById("auth-message");
+        <div>
+            <span>COMMUNITY</span>
 
-    const loginTab =
-        document.getElementById("login-tab");
+            <h2>Need help?</h2>
 
-    const signupTab =
-        document.getElementById("signup-tab");
+            <p>
+                Talk with the MinePeak Market community and contact
+                <strong>Drexar_226</strong>.
+            </p>
+        </div>
 
-    const title =
-        document.getElementById("auth-title");
+        <a
+            href="https://discord.gg/uPrkZWFkp"
+            target="_blank"
+            class="discord-button"
+        >
+            💬 Join Discord
+        </a>
 
-    const description =
-        document.getElementById("auth-description");
+    </div>
 
+</section>
 
-    let signupMode = false;
 
+<footer>
 
-    /* =================================
-       LOGIN TAB
-    ================================= */
+    <div class="footer-brand">
+        <strong>⛏️ MinePeak Market</strong>
+        <p>Your marketplace for MinePeak goods.</p>
+    </div>
 
-    loginTab.addEventListener("click", function () {
+    <div class="footer-links">
 
-        signupMode = false;
+        <a href="index.html">Home</a>
+        <a href="#market">Marketplace</a>
+        <a href="#categories">Categories</a>
+        <a href="auth.html?mode=signup">Sign Up</a>
 
-        loginTab.classList.add("active");
-        signupTab.classList.remove("active");
+        <a
+            href="https://discord.gg/uPrkZWFkp"
+            target="_blank"
+        >
+            Discord · Drexar_226
+        </a>
 
-        title.textContent =
-            "Welcome back";
+    </div>
 
-        description.textContent =
-            "Log in to continue to MinePeak Market.";
+    <div class="copyright">
+        © 2026 MinePeak Market
+    </div>
 
-        button.textContent =
-            "Login";
+</footer>
 
-        message.textContent = "";
 
-    });
-
-
-    /* =================================
-       SIGN UP TAB
-    ================================= */
-
-    signupTab.addEventListener("click", function () {
-
-        signupMode = true;
-
-        signupTab.classList.add("active");
-        loginTab.classList.remove("active");
-
-        title.textContent =
-            "Create your account";
-
-        description.textContent =
-            "Join MinePeak Market and start trading.";
-
-        button.textContent =
-            "Create Account";
-
-        message.textContent = "";
-
-    });
-
-
-    /* =================================
-       FORM SUBMISSION
-    ================================= */
-
-    form.addEventListener("submit", async function (event) {
-
-        event.preventDefault();
-
-        const email =
-            document.getElementById("email").value.trim();
-
-        const password =
-            document.getElementById("password").value;
-
-
-        if (!email || !password) {
-
-            message.textContent =
-                "Please enter your email and password.";
-
-            return;
-        }
-
-
-        button.disabled = true;
-
-        message.textContent =
-            "Please wait...";
-
-
-        /* =================================
-           SIGN UP
-        ================================= */
-
-        if (signupMode) {
-
-            const { error } =
-                await supabase.auth.signUp({
-
-                    email: email,
-                    password: password
-
-                });
-
-
-            button.disabled = false;
-
-
-            if (error) {
-
-                message.textContent =
-                    error.message;
-
-                return;
-            }
-
-
-            message.textContent =
-                "Account created! Check your email to verify your account.";
-
-            return;
-        }
-
-
-        /* =================================
-           LOGIN
-        ================================= */
-
-        const { error } =
-            await supabase.auth.signInWithPassword({
-
-                email: email,
-                password: password
-
-            });
-
-
-        button.disabled = false;
-
-
-        if (error) {
-
-            message.textContent =
-                error.message;
-
-            return;
-        }
-
-
-        message.textContent =
-            "Login successful!";
-
-
-        setTimeout(function () {
-
-            window.location.href =
-                "index.html";
-
-        }, 1000);
-
-    });
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
