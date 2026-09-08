@@ -6,14 +6,6 @@ const supabase = window.supabase.createClient(
     SUPABASE_PUBLISHABLE_KEY
 );
 
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_PUBLISHABLE_KEY = "YOUR_SUPABASE_PUBLISHABLE_KEY";
-
-const supabase = window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_PUBLISHABLE_KEY
-);
-
 const form = document.getElementById("auth-form");
 const button = document.getElementById("auth-button");
 const message = document.getElementById("auth-message");
@@ -23,11 +15,14 @@ const signupTab = document.getElementById("signup-tab");
 
 let signupMode = false;
 
+// ================================
 // LOGIN TAB
+// ================================
 
-loginTab.addEventListener("click", function () {
+loginTab.addEventListener("click", function (event) {
 
-```
+event.preventDefault();
+
 signupMode = false;
 
 loginTab.classList.add("active");
@@ -36,15 +31,17 @@ signupTab.classList.remove("active");
 button.textContent = "Login";
 
 message.textContent = "";
-```
 
 });
 
+// ================================
 // SIGN UP TAB
+// ================================
 
-signupTab.addEventListener("click", function () {
+signupTab.addEventListener("click", function (event) {
 
-```
+event.preventDefault();
+
 signupMode = true;
 
 signupTab.classList.add("active");
@@ -53,15 +50,15 @@ loginTab.classList.remove("active");
 button.textContent = "Create Account";
 
 message.textContent = "";
-```
 
 });
 
-// LOGIN / SIGN UP
+// ================================
+// FORM SUBMISSION
+// ================================
 
 form.addEventListener("submit", async function (event) {
 
-```
 event.preventDefault();
 
 const email = document
@@ -73,16 +70,22 @@ const password = document
     .getElementById("password")
     .value;
 
-message.textContent = "Please wait...";
+if (!email || !password) {
+    message.textContent = "Please enter your email and password.";
+    return;
+}
 
 button.disabled = true;
+message.textContent = "Please wait...";
 
 
+// ================================
 // SIGN UP
+// ================================
 
 if (signupMode) {
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
         email: email,
         password: password
     });
@@ -103,9 +106,11 @@ if (signupMode) {
 }
 
 
+// ================================
 // LOGIN
+// ================================
 
-const { data, error } =
+const { error } =
     await supabase.auth.signInWithPassword({
         email: email,
         password: password
@@ -128,6 +133,5 @@ setTimeout(function () {
     window.location.href = "index.html";
 
 }, 1000);
-```
 
 });
