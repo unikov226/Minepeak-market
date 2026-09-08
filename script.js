@@ -1,27 +1,69 @@
-const usernameInput = document.getElementById("minepeak-username");
-const confirmInput = document.getElementById("confirm-username");
-const checkbox = document.getElementById("username-confirmation");
-const button = document.getElementById("confirm-trade");
-const message = document.getElementById("trade-message");
+function searchProducts() {
+    const input = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
 
-button.addEventListener("click", function () {
-    const username = usernameInput.value.trim();
-    const confirmedUsername = confirmInput.value.trim();
+    const products = document.querySelectorAll(".product-card");
 
-    if (!username || !confirmedUsername) {
-        message.textContent = "Please enter your MinePeak username twice.";
-        return;
+    products.forEach(product => {
+        const text = product.innerText.toLowerCase();
+
+        if (!input || text.includes(input)) {
+            product.style.display = "";
+        } else {
+            product.style.display = "none";
+        }
+    });
+
+    document
+        .getElementById("market")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+
+function sortListings() {
+
+    const grid = document.getElementById("productGrid");
+
+    const products = Array.from(
+        grid.querySelectorAll(".product-card")
+    );
+
+    const sort = document.getElementById("sortSelect").value;
+
+    if (sort === "low") {
+
+        products.sort(
+            (a, b) =>
+                Number(a.dataset.price) -
+                Number(b.dataset.price)
+        );
+
+    } else if (sort === "high") {
+
+        products.sort(
+            (a, b) =>
+                Number(b.dataset.price) -
+                Number(a.dataset.price)
+        );
     }
 
-    if (username !== confirmedUsername) {
-        message.textContent = "The usernames do not match.";
-        return;
-    }
+    products.forEach(product => {
+        grid.appendChild(product);
+    });
+}
 
-    if (!checkbox.checked) {
-        message.textContent = "Please confirm that this is your username.";
-        return;
-    }
 
-    message.textContent = "Username confirmed successfully!";
-});
+document
+    .getElementById("searchInput")
+    .addEventListener("keydown", function(event) {
+
+        if (event.key === "Enter") {
+            searchProducts();
+        }
+
+    });
